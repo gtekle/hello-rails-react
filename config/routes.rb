@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'static/index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   namespace :api do
     namespace :v1, defaults: { format: 'json' } do
@@ -8,5 +9,5 @@ Rails.application.routes.draw do
     end
   end
   # Defines the root path route ("/")
-  # root "articles#index"
+  root "static#index"
 end
