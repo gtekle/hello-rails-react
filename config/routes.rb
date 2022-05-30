@@ -8,6 +8,13 @@ Rails.application.routes.draw do
       get 'greetings', to: 'greetings#index'
     end
   end
+
+  # Forward all requests to StaticController#index but request
+  # must be non-Ajax(!req.xhr?) and HTML Mime type (req.format.html?).
+  # This doesn't include the root ("/") path.
+  get '*page', to: 'static#index', constaints: lambda { |req|
+    !req.xhr? && req.format.html?
+  }
   # Defines the root path route ("/")
-  root "static#index"
+  root 'static#index'
 end
