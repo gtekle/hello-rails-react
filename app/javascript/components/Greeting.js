@@ -24,11 +24,13 @@ function getGreetingSuccess(json){
   }
 }
 
-class Greeting extends React.Component {
+class Greeting extends React.Component { 
+  componentDidMount() {
+    this.props.getGreeting();
+  }
+
   render () {
     const { greeting } = this.props;
-    console.log(this.props.greeting, ' in Greeting component')
-
     return (
       <React.Fragment>
         <div>
